@@ -17,7 +17,6 @@ if (!self.__WB_pmw) {
   let self = _____WB$wombat$assign$function_____("self");
   let document = _____WB$wombat$assign$function_____("document");
   let location = _____WB$wombat$assign$function_____("location");
-  //let top = _____WB$wombat$assign$function_____("top");
   let parent = _____WB$wombat$assign$function_____("parent");
   let frames = _____WB$wombat$assign$function_____("frames");
   let opener = _____WB$wombat$assign$function_____("opener");
@@ -29,10 +28,17 @@ if (!self.__WB_pmw) {
     if (index > 0) {
       window.location = loc.substring(0, index);
     }
-    if ($(window).width() < 1280) {
+
+    // Adjust breakpoint for mobile detection
+    if ($(window).width() < 768) {
+      // Remove the id attribute from pagedata elements for mobile
       $(".pagedata").removeAttr("id");
       $("html, body").css("overflow-y", "scroll");
+
+      // Disable PagePiling for mobile
+      $.fn.pagepiling.destroy("all");
     } else {
+      // Initialize PagePiling.js for screens wider than 768px
       $("#pagepiling").pagepiling({
         direction: "vertical",
         sectionsColor: [
@@ -105,6 +111,7 @@ if (!self.__WB_pmw) {
         },
       });
     }
+
     $(".side-menu").removeClass("hidden");
     setTimeout(function () {
       $(".loader-bg").fadeToggle();
@@ -113,6 +120,8 @@ if (!self.__WB_pmw) {
       "active"
     );
   });
+
+  // jQuery Scroll and Header Appear Logic
   jQuery(function ($) {
     "use strict";
     $(window).on("scroll", function () {
@@ -144,6 +153,8 @@ if (!self.__WB_pmw) {
         1200
       );
     });
+
+    // Side Menu Toggle Logic
     if ($("#sidemenu_toggle").length) {
       $("#sidemenu_toggle").on("click", function () {
         $(".pushwrap").toggleClass("active");
@@ -166,16 +177,22 @@ if (!self.__WB_pmw) {
             $(".pushwrap").removeClass("active");
         });
     }
+
+    // Progress Bar Animation
     $(".progress-bar").each(function () {
       $(this).appear(function () {
         $(this).animate({ width: $(this).attr("aria-valuenow") + "%" }, 2000);
       });
     });
+
+    // Fancybox and Carousel Logic
     $("[data-fancybox]").fancybox({
       protect: true,
       animationEffect: "fade",
       hash: null,
     });
+
+    // Team Carousel
     $(".team-classic.owl-team").owlCarousel({
       items: 3,
       margin: 30,
@@ -204,6 +221,8 @@ if (!self.__WB_pmw) {
       owl.owlCarousel();
       owl.trigger("prev.owl.carousel", [300]);
     });
+
+    // Testimonial Carousel
     $("#testimonial-carousal").owlCarousel({
       loop: true,
       margin: 120,
@@ -214,23 +233,3 @@ if (!self.__WB_pmw) {
     });
   });
 }
-/*
-     FILE ARCHIVED ON 22:50:19 Sep 30, 2024 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 04:33:13 Oct 30, 2024.
-     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
-
-     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
-     SECTION 108(a)(3)).
-*/
-/*
-playback timings (ms):
-  captures_list: 0.599
-  exclusion.robots: 0.02
-  exclusion.robots.policy: 0.009
-  esindex: 0.011
-  cdx.remote: 26.637
-  LoadShardBlock: 368.682 (3)
-  PetaboxLoader3.datanode: 145.371 (4)
-  PetaboxLoader3.resolve: 342.891 (2)
-  load_resource: 146.617
-*/
