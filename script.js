@@ -17,6 +17,7 @@ if (!self.__WB_pmw) {
   let self = _____WB$wombat$assign$function_____("self");
   let document = _____WB$wombat$assign$function_____("document");
   let location = _____WB$wombat$assign$function_____("location");
+  //let top = _____WB$wombat$assign$function_____("top");
   let parent = _____WB$wombat$assign$function_____("parent");
   let frames = _____WB$wombat$assign$function_____("frames");
   let opener = _____WB$wombat$assign$function_____("opener");
@@ -28,17 +29,10 @@ if (!self.__WB_pmw) {
     if (index > 0) {
       window.location = loc.substring(0, index);
     }
-
-    // Adjust breakpoint for mobile detection
-    if ($(window).width() < 768) {
-      // Remove the id attribute from pagedata elements for mobile
+    if ($(window).width() < 1280) {
       $(".pagedata").removeAttr("id");
       $("html, body").css("overflow-y", "scroll");
-
-      // Disable PagePiling for mobile
-      $.fn.pagepiling.destroy("all");
     } else {
-      // Initialize PagePiling.js for screens wider than 768px
       $("#pagepiling").pagepiling({
         direction: "vertical",
         sectionsColor: [
@@ -111,7 +105,6 @@ if (!self.__WB_pmw) {
         },
       });
     }
-
     $(".side-menu").removeClass("hidden");
     setTimeout(function () {
       $(".loader-bg").fadeToggle();
@@ -120,8 +113,6 @@ if (!self.__WB_pmw) {
       "active"
     );
   });
-
-  // jQuery Scroll and Header Appear Logic
   jQuery(function ($) {
     "use strict";
     $(window).on("scroll", function () {
@@ -153,8 +144,6 @@ if (!self.__WB_pmw) {
         1200
       );
     });
-
-    // Side Menu Toggle Logic
     if ($("#sidemenu_toggle").length) {
       $("#sidemenu_toggle").on("click", function () {
         $(".pushwrap").toggleClass("active");
@@ -177,22 +166,16 @@ if (!self.__WB_pmw) {
             $(".pushwrap").removeClass("active");
         });
     }
-
-    // Progress Bar Animation
     $(".progress-bar").each(function () {
       $(this).appear(function () {
         $(this).animate({ width: $(this).attr("aria-valuenow") + "%" }, 2000);
       });
     });
-
-    // Fancybox and Carousel Logic
     $("[data-fancybox]").fancybox({
       protect: true,
       animationEffect: "fade",
       hash: null,
     });
-
-    // Team Carousel
     $(".team-classic.owl-team").owlCarousel({
       items: 3,
       margin: 30,
@@ -221,8 +204,6 @@ if (!self.__WB_pmw) {
       owl.owlCarousel();
       owl.trigger("prev.owl.carousel", [300]);
     });
-
-    // Testimonial Carousel
     $("#testimonial-carousal").owlCarousel({
       loop: true,
       margin: 120,
