@@ -146,7 +146,7 @@ header a.logo img {
 
 @media screen and (max-width:1280px) {
     #pagepiling{
-        display: hidden;
+        display: none !important; 
     }
 }
 
