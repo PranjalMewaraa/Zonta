@@ -144,11 +144,6 @@ header a.logo img {
 
 }
 
-@media screen and (max-width:786px) {
-    #pagepiling{
-        overflow-y: scroll;
-    }
-}
 .nav-button {
     margin: 0 1.5rem;
 }
