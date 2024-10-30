@@ -26,6 +26,9 @@ html, body {
     .pp-section{
         position: initial;
     }
+    #pagepiling{
+        touch-action: auto;
+    }
 }
 .pp-easing {
     -webkit-transition: all 1000ms cubic-bezier(0.550, 0.085, 0.000, 0.990);
