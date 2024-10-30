@@ -138,6 +138,17 @@ header a.logo img {
     vertical-align: sub;
 }
 
+#pagepiling{
+
+    overflow-y: hidden;
+
+}
+
+@media screen and (max-width:786px) {
+    #pagepiling{
+        overflow-y: scroll;
+    }
+}
 .nav-button {
     margin: 0 1.5rem;
 }
